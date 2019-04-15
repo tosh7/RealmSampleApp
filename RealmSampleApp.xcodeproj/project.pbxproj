@@ -86,11 +86,19 @@
 			isa = PBXGroup;
 			children = (
 				2B7D52CA22645BA500AA57D0 /* AppDelegate.swift */,
+				2B7D52E22264615100AA57D0 /* ViewController */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2B7D52E22264615100AA57D0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				2B7D52CC22645BA500AA57D0 /* HomeViewController.swift */,
 				2B7D52DE22645F3E00AA57D0 /* RegisterViewController.swift */,
 				2B7D52E022645F8E00AA57D0 /* DetailViewController.swift */,
 			);
-			path = Sources;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		4FDE657B697F289415F7DF27 /* Pods */ = {

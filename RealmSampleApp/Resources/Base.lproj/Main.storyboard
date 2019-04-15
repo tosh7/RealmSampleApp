@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UD4-UJ-Q0O"/>
                     <connections>
-                        <segue destination="zN0-lV-dRO" kind="show" id="E3V-HW-UME"/>
+                        <segue destination="zN0-lV-dRO" kind="show" identifier="toDetail" id="E3V-HW-UME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
