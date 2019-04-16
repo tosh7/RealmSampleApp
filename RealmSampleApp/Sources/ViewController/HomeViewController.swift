@@ -8,11 +8,21 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //delegateとDataSourceをセット
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        //customCellを使う場合registerしてあげる
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell",
+                                      bundle: nil),
+                                forCellWithReuseIdentifier: "cell")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -21,21 +31,19 @@ final class HomeViewController: UIViewController {
             detailViewController.number = sender as? Int
         }
     }
-}
-
-extension HomeViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toDetail", sender: indexPath)
     }
-}
-
-extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
+        
+        cell.label.text = "とりま"
+        return cell
     }
 }
