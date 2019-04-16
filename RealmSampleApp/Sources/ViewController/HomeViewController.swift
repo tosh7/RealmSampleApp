@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
                                 forCellWithReuseIdentifier: "cell")
     }
     
+    //画面遷移における値送り
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
             let detailViewController = segue.destination as! DetailViewController
@@ -32,14 +33,17 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    //cellがタップされた時の挙動を書いている
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toDetail", sender: indexPath)
     }
     
+    //cellの数をセット
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
+    //cellの中身をセット
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         
