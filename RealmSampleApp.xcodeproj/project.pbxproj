@@ -16,6 +16,7 @@
 		2B7D52E122645F8E00AA57D0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7D52E022645F8E00AA57D0 /* DetailViewController.swift */; };
 		2BA9741222658CDF00C1DF7A /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9741022658CDF00C1DF7A /* CustomCollectionViewCell.swift */; };
 		2BA9741322658CDF00C1DF7A /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9741122658CDF00C1DF7A /* CustomCollectionViewCell.xib */; };
+		2BE80ABE22677E1D00AD4C70 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE80ABD22677E1D00AD4C70 /* Book.swift */; };
 		98AC53F171978DF763406849 /* Pods_RealmSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4545F4CFA48DA09BFA8BB37 /* Pods_RealmSampleApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		2B7D52E022645F8E00AA57D0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2BA9741022658CDF00C1DF7A /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		2BA9741122658CDF00C1DF7A /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		2BE80ABD22677E1D00AD4C70 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		83633FABE9DC6B15C5F4997A /* Pods-RealmSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmSampleApp.release.xcconfig"; path = "Target Support Files/Pods-RealmSampleApp/Pods-RealmSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		C7C79F62E169B4006E5616E0 /* Pods-RealmSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmSampleApp.debug.xcconfig"; path = "Target Support Files/Pods-RealmSampleApp/Pods-RealmSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D4545F4CFA48DA09BFA8BB37 /* Pods_RealmSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2B7D52CA22645BA500AA57D0 /* AppDelegate.swift */,
+				2BE80ABC22677E0400AD4C70 /* Model */,
 				2BA9740F22658CAC00C1DF7A /* Cell */,
 				2B7D52E22264615100AA57D0 /* ViewController */,
 			);
@@ -113,6 +116,14 @@
 				2BA9741122658CDF00C1DF7A /* CustomCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		2BE80ABC22677E0400AD4C70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BE80ABD22677E1D00AD4C70 /* Book.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4FDE657B697F289415F7DF27 /* Pods */ = {
@@ -257,6 +268,7 @@
 			files = (
 				2B7D52DF22645F3E00AA57D0 /* RegisterViewController.swift in Sources */,
 				2BA9741222658CDF00C1DF7A /* CustomCollectionViewCell.swift in Sources */,
+				2BE80ABE22677E1D00AD4C70 /* Book.swift in Sources */,
 				2B7D52CD22645BA500AA57D0 /* HomeViewController.swift in Sources */,
 				2B7D52CB22645BA500AA57D0 /* AppDelegate.swift in Sources */,
 				2B7D52E122645F8E00AA57D0 /* DetailViewController.swift in Sources */,
