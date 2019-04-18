@@ -11,24 +11,55 @@ import RealmSwift
 
 final class RegisterViewController: UIViewController {
 
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var authorTextField: UITextField!
-    @IBOutlet weak var publishDateTextField: UITextField!
-    @IBOutlet weak var publisherTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!{
+        didSet {
+            titleTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var authorTextField: UITextField! {
+        didSet {
+            authorTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var publishDateTextField: UITextField! {
+        didSet {
+            publishDateTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var publisherTextField: UITextField! {
+        didSet {
+            publisherTextField.delegate = self
+        }
+    }
     @IBOutlet weak var bookImageButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
     
     let realm = try! Realm()
     var book = Book()
+    var selectedImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
     @IBAction func setBookImage(_ sender: Any) {
         useCamera()
+    }
+    
+    @IBAction func register(_ sender: Any) {
+        book.bookTitle      = titleTextField.text ?? ""
+        book.authorName     = authorTextField.text ?? ""
+        book.publisher      = publisherTextField.text ?? ""
+        
+        guard let _selectedImage = selectedImage else {
+            print("画像を選択してちょ")
+            return
+        }
+        book.bookImage = _selectedImage.jpegData(compressionQuality: 1)!
+        
+        try! realm.write {
+            realm.add(book)
+        }
     }
     
     //textField以外の部分をタップするとキーボードをしまう
@@ -51,10 +82,10 @@ extension RegisterViewController: UITextFieldDelegate {
 extension RegisterViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.editedImage] as? UIImage {
-            bookImageButton.setImage(selectedImage, for: .normal)
+        selectedImage = info[.editedImage] as? UIImage
+        if let _selectedImage = selectedImage {
+            bookImageButton.setImage(_selectedImage, for: .normal)
         }
-        imageView.image = info[.editedImage] as? UIImage
         
         dismiss(animated: true, completion: nil)
     }
