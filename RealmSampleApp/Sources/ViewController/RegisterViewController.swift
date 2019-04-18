@@ -16,6 +16,7 @@ final class RegisterViewController: UIViewController {
     @IBOutlet weak var publishDateTextField: UITextField!
     @IBOutlet weak var publisherTextField: UITextField!
     @IBOutlet weak var bookImageButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     let realm = try! Realm()
     var book = Book()
@@ -27,6 +28,7 @@ final class RegisterViewController: UIViewController {
     }
     
     @IBAction func setBookImage(_ sender: Any) {
+        useCamera()
     }
     
     //textField以外の部分をタップするとキーボードをしまう
@@ -49,7 +51,12 @@ extension RegisterViewController: UITextFieldDelegate {
 extension RegisterViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        <#code#>
+        if let selectedImage = info[.editedImage] as? UIImage {
+            bookImageButton.setImage(selectedImage, for: .normal)
+        }
+        imageView.image = info[.editedImage] as? UIImage
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func useCamera() {
@@ -59,6 +66,10 @@ extension RegisterViewController: UIImagePickerControllerDelegate,  UINavigation
             picker.sourceType = .camera
             picker.delegate = self
             picker.allowsEditing = true
+            
+            present(picker, animated: true, completion: nil)
+        } else {
+            print("カメラが使用できませんでした")
         }
     }
 }
