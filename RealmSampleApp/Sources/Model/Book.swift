@@ -13,9 +13,7 @@ final class Book: Object {
     
     @objc dynamic var bookTitle: String = ""
     @objc dynamic var authorName: String = ""
-    @objc dynamic var publishDate: Date = Date()
     @objc dynamic var publisher: String = ""
     @objc dynamic var bookImage: Data = Data()
-    
     
 }

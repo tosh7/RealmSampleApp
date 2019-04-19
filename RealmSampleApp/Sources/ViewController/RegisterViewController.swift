@@ -21,11 +21,6 @@ final class RegisterViewController: UIViewController {
             authorTextField.delegate = self
         }
     }
-    @IBOutlet weak var publishDateTextField: UITextField! {
-        didSet {
-            publishDateTextField.delegate = self
-        }
-    }
     @IBOutlet weak var publisherTextField: UITextField! {
         didSet {
             publisherTextField.delegate = self
@@ -36,11 +31,6 @@ final class RegisterViewController: UIViewController {
     let realm = try! Realm()
     var book = Book()
     var selectedImage: UIImage!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     @IBAction func setBookImage(_ sender: Any) {
         useCamera()
