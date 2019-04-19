@@ -11,44 +11,30 @@ import RealmSwift
 
 final class RegisterViewController: UIViewController {
 
-    @IBOutlet weak var titleTextField: UITextField!{
-        didSet {
-            titleTextField.delegate = self
-        }
-    }
-    @IBOutlet weak var authorTextField: UITextField! {
-        didSet {
-            authorTextField.delegate = self
-        }
-    }
-    @IBOutlet weak var publisherTextField: UITextField! {
-        didSet {
-            publisherTextField.delegate = self
-        }
-    }
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var authorTextField: UITextField!
+    @IBOutlet weak var publisherTextField: UITextField!
     @IBOutlet weak var bookImageButton: UIButton!
     
-    let realm = try! Realm()
-    var book = Book()
     var selectedImage: UIImage!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        titleTextField.delegate = self
+        authorTextField.delegate = self
+        publisherTextField.delegate = self
+    }
     
     @IBAction func setBookImage(_ sender: Any) {
         useCamera()
     }
     
     @IBAction func register(_ sender: Any) {
-        book.bookTitle      = titleTextField.text ?? ""
-        book.authorName     = authorTextField.text ?? ""
-        book.publisher      = publisherTextField.text ?? ""
         
         guard let _selectedImage = selectedImage else {
             print("画像を選択してちょ")
             return
-        }
-        book.bookImage = _selectedImage.jpegData(compressionQuality: 1)!
-        
-        try! realm.write {
-            realm.add(book)
         }
         
         self.dismiss(animated: true, completion: nil)
