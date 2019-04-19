@@ -50,6 +50,8 @@ final class RegisterViewController: UIViewController {
         try! realm.write {
             realm.add(book)
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     //textField以外の部分をタップするとキーボードをしまう

@@ -254,6 +254,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="goy-w9-d1j"/>
                     </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="9tI-3I-NQF" id="m8Z-LK-TDV"/>
+                        <outlet property="bookImage" destination="TE1-8I-Eky" id="0TH-Lx-AKQ"/>
+                        <outlet property="publisherLabel" destination="oKg-gz-PJY" id="10u-Ug-OVV"/>
+                        <outlet property="titleLabel" destination="XrY-ef-7Lx" id="yR9-i5-0tG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xaB-RF-B7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
