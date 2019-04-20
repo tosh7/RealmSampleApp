@@ -56,7 +56,7 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         
         cell.label.text = String(books[indexPath.row].bookTitle)
-        cell.imageView.image = UIImage(data: books[indexPath.row].bookImage)
+        cell.imageView.image = books[indexPath.row].bookImage
         return cell
     }
 }

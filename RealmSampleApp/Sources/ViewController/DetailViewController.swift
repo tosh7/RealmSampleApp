@@ -29,7 +29,7 @@ final class DetailViewController: UIViewController {
 extension DetailViewController {
     
     func setUpDetail() {
-        bookImage.image = UIImage(data: bookArray[number].bookImage)
+        bookImage.image = bookArray[number].bookImage
         titleLabel.text = bookArray[number].bookTitle
         authorLabel.text = bookArray[number].authorName
         publisherLabel.text = bookArray[number].publisher

@@ -44,7 +44,7 @@ final class RegisterViewController: UIViewController {
             print("画像を選択してちょ")
             return
         }
-        book.bookImage = _selectedImage.jpegData(compressionQuality: 1)!
+        book.bookImage = _selectedImage
         
         book.save()
        

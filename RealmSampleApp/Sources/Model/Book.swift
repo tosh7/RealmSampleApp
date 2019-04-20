@@ -16,10 +16,36 @@ final class Book: Object {
     @objc dynamic var bookTitle: String = ""
     @objc dynamic var authorName: String = ""
     @objc dynamic var publisher: String = ""
-    @objc dynamic var bookImage: Data = Data()
+    @objc dynamic private var _bookImage: UIImage? = nil
+    @objc dynamic var bookImage: UIImage? {
+        set {
+            self._bookImage = newValue
+            if let value = newValue {
+                self.bookImageData = value.jpegData(compressionQuality: 1)
+            }
+        }
+        get {
+            if let image = self._bookImage {
+                return image
+            }
+            
+            if let data = self.bookImageData {
+                self._bookImage = UIImage(data: data)
+                return self._bookImage
+            }
+            
+            return nil
+        }
+    }
+    @objc dynamic private var bookImageData: Data? = nil
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    //これを指定することによってRealmで定義できない型でも指定できるようにしている
+    override static func ignoredProperties() -> [String] {
+        return ["_bookImage", "bookImage"]
     }
     
     static func lasdId() -> Int {
