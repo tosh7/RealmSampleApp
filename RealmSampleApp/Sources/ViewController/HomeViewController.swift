@@ -7,14 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 
 final class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    let realm = try! Realm()
-    var bookArray: Results<Book>!
+    var books: [Book]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +24,12 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.register(UINib(nibName: "CustomCollectionViewCell",
                                       bundle: nil),
                                 forCellWithReuseIdentifier: "cell")
-        
-        bookArray = realm.objects(Book.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        books = Book.loadAll()
         collectionView.reloadData()
     }
     
@@ -52,15 +48,15 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //cellの数をセット
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookArray.count
+        return books.count
     }
     
     //cellの中身をセット
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         
-        cell.label.text = bookArray[indexPath.row].bookTitle
-        cell.imageView.image = UIImage(data: bookArray[indexPath.row].bookImage)
+        cell.label.text = String(books[indexPath.row].bookTitle)
+        cell.imageView.image = UIImage(data: books[indexPath.row].bookImage)
         return cell
     }
 }

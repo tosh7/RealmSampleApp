@@ -28,8 +28,7 @@ final class RegisterViewController: UIViewController {
     }
     @IBOutlet weak var bookImageButton: UIButton!
     
-    let realm = try! Realm()
-    var book = Book()
+    var book = Book.creat()
     var selectedImage: UIImage!
     
     @IBAction func setBookImage(_ sender: Any) {
@@ -47,9 +46,8 @@ final class RegisterViewController: UIViewController {
         }
         book.bookImage = _selectedImage.jpegData(compressionQuality: 1)!
         
-        try! realm.write {
-            realm.add(book)
-        }
+        book.save()
+       
         
         self.dismiss(animated: true, completion: nil)
     }

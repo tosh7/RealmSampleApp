@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 final class DetailViewController: UIViewController {
     
@@ -16,14 +15,13 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     
-    let realm = try! Realm()
-    var bookArray: Results<Book>!
+    var bookArray: [Book]!
     var number: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bookArray = realm.objects(Book.self)
+        bookArray = Book.loadAll()
         setUpDetail()
     }
 }
